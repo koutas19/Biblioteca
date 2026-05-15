@@ -1,0 +1,65 @@
+EVIDÊNCIA DE EXECUÇÃO — Sistema de Controle de Empréstimo de Livros
+Comando: mvn exec:java -Dexec.mainClass="br.edu.biblioteca.Main"
+
+
+[DB] Banco inicializado: biblioteca.db
+[Livro] Cadastrado: Java: Como Programar (id=1)
+[Livro] Cadastrado: Banco de Dados (id=2)
+[Livro] Cadastrado: Projetor Epson (id=3)
+[Usuário] Cadastrado: Alexandre Mendes – 2024001 (id=1)
+[Usuário] Cadastrado: José Silva – 2024002 (id=2)
+[Usuário] Cadastrado: Alexandre Mendes – 2024001 (id=1)
+[Empréstimo] Registrado! (livro=1, usuário=1)
+[Empréstimo] Registrado! (livro=3, usuário=2)
+[Empréstimo] Livro id=1 está INDISPONÍVEL.
+[Empréstimo] Livro id=9999 não existe.
+[Devolução] Registrada! (livro=1, usuário=1)
+[Devolução] Nenhum empréstimo ativo encontrado para livro=1 e usuário=1.
+
+Livro salvo no banco                               ✔ PASSOU
+Livro Banco salvo no banco                         ✔ PASSOU
+Livro Projetor salvo no banco                      ✔ PASSOU
+Alexandre salvo no banco                           ✔ PASSOU
+José salvo no banco                                ✔ PASSOU
+Matrícula duplicada retorna id existente           ✔ PASSOU
+Empréstimo Java→Alexandre realizado                ✔ PASSOU
+Empréstimo Projetor→José realizado                 ✔ PASSOU
+Livro Java ficou indisponível no banco             ✔ PASSOU
+Livro Projetor ficou indisponível no banco         ✔ PASSOU
+Livro já emprestado foi bloqueado                  ✔ PASSOU
+Empréstimo indevido não foi salvo no banco         ✔ PASSOU
+Livro inexistente foi bloqueado                    ✔ PASSOU
+Empréstimo indevido não foi salvo no banco         ✔ PASSOU
+Devolução do livro Java realizada                  ✔ PASSOU
+Livro Java voltou a ficar disponível               ✔ PASSOU
+Segunda devolução foi bloqueada                    ✔ PASSOU
+
+===== BANCO DE DADOS =====
+
+=== USUÁRIOS ===
+Usuario{id=1, nome='Alexandre Mendes', matricula='2024001', curso='ADS'}
+Usuario{id=2, nome='José Silva', matricula='2024002', curso='Computação'}
+
+=== LIVROS ===
+Livro{id=1, titulo='Java: Como Programar', autor='Deitel & Deitel', disponivel=sim}
+Livro{id=2, titulo='Banco de Dados', autor='Ramez Elmasri', disponivel=sim}
+Livro{id=3, titulo='Projetor Epson', autor='Laboratório', disponivel=não}
+
+=== LIVROS DISPONÍVEIS ===
+Livro{id=1, titulo='Java: Como Programar', autor='Deitel & Deitel', disponivel=sim}
+Livro{id=2, titulo='Banco de Dados', autor='Ramez Elmasri', disponivel=sim}
+
+=== EMPRÉSTIMOS ===
+Emprestimo{id=1, idLivro=1, idUsuario=1, dataEmprestimo=2026-05-05, dataDevolucao=2026-05-05, status='FINALIZADO'}
+Emprestimo{id=2, idLivro=3, idUsuario=2, dataEmprestimo=2026-05-05, dataDevolucao=-, status='ATIVO'}
+
+=== EMPRÉSTIMOS ATIVOS ===
+Emprestimo{id=2, idLivro=3, idUsuario=2, dataEmprestimo=2026-05-05, dataDevolucao=-, status='ATIVO'}
+
+=== HISTÓRICO DE EMPRÉSTIMOS ===
+Emprestimo{id=1, idLivro=1, idUsuario=1, dataEmprestimo=2026-05-05, dataDevolucao=2026-05-05, status='FINALIZADO'}
+Emprestimo{id=2, idLivro=3, idUsuario=2, dataEmprestimo=2026-05-05, dataDevolucao=-, status='ATIVO'}
+
+================================================================
+RESULTADO FINAL: 17/17 testes passaram ✔
+================================================================
